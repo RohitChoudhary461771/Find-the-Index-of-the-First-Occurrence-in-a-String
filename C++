@@ -1,0 +1,38 @@
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+       int a1=haystack.length();
+       int a2=needle.length();
+
+        if(a2>a1)return -1;
+        int ans=-1;
+
+       
+        for(int i=0;i<a1;i++){
+            int cnt=0;
+            
+           for(int j=i;j<i+a2;j++){
+               if(haystack[j]!=needle[j-i] ){
+                   break;
+               }
+               else{
+                   if(j<a1)
+                   cnt++;
+               }
+           }
+           if(cnt==a2){
+               ans=i;
+                break;
+           }
+           
+        }
+        
+
+       return ans;
+    }
+};
